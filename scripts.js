@@ -1,31 +1,27 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
+import { createBookPreviewElement } from './utils/helper-functions.js'
 
-let page = 1;
-let matches = books
-
-const starting = document.createDocumentFragment()
-
-for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
-    const element = document.createElement('button')
-    element.classList = 'preview'
-    element.setAttribute('data-preview', id)
-
-    element.innerHTML = `
-        <img
-            class="preview__image"
-            src="${image}"
-        />
-        
-        <div class="preview__info">
-            <h3 class="preview__title">${title}</h3>
-            <div class="preview__author">${authors[author]}</div>
-        </div>
-    `
-
-    starting.appendChild(element)
+const booksData = {
+    books,
+    authors,
+    genres,
+    booksPerPage: BOOKS_PER_PAGE 
 }
 
-document.querySelector('[data-list-items]').appendChild(starting)
+let page = 1;
+let matches = booksData.books;
+
+const displayBookPreviews = () => {
+    const starting = document.createDocumentFragment();
+    for (const book of matches.slice(0, booksData.booksPerPage)) {
+        starting.appendChild(createBookPreviewElement(book));
+    }
+    document.querySelector('[data-list-items]').appendChild(starting);
+}
+
+const initializeApp = () => {
+    displayBookPreviews();
+}
 
 const genreHtml = document.createDocumentFragment()
 const firstGenreElement = document.createElement('option')
@@ -234,3 +230,5 @@ document.querySelector('[data-list-items]').addEventListener('click', (event) =>
         document.querySelector('[data-list-description]').innerText = active.description
     }
 })
+
+initializeApp();
