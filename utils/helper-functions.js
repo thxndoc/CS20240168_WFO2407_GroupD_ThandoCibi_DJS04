@@ -32,6 +32,12 @@ export const createGenreOptionElement = (genreId, genreName) => {
     return element;
   };
 
+  export const appendOptions = (entries, fragment, createOptionElement) => {
+    entries.forEach(([id, name]) => {
+        fragment.appendChild(createOptionElement(id, name))
+    });
+  }
+
   export const updateTheme = (theme) => {
     if (theme === 'night') {
       document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
