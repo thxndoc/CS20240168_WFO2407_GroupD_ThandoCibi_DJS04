@@ -18,21 +18,21 @@ export const createBookPreviewElement = (book) => {
     return element;
 }
 
-const createGenreOptionElement = (genreId, genreName) => {
+export const createGenreOptionElement = (genreId, genreName) => {
     const element = document.createElement('option');
     element.value = genreId;
     element.innerText = genreName;
     return element;
   };
 
-  const createAuthorOptionElement = (authorId, authorName) => {
+  export const createAuthorOptionElement = (authorId, authorName) => {
     const element = document.createElement('option');
     element.value = authorId;
     element.innerText = authorName;
     return element;
   };
 
-  const updateTheme = (theme) => {
+  export const updateTheme = (theme) => {
     if (theme === 'night') {
       document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
       document.documentElement.style.setProperty('--color-light', '10, 10, 20');
