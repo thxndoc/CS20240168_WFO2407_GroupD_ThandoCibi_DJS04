@@ -1,5 +1,10 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
-import { createBookPreviewElement } from './utils/helper-functions.js'
+import { createBookPreviewElement,
+        createGenreOptionElement,
+        createAuthorOptionElement,
+        updateTheme
+ } from './utils/helper-functions.js'
+
 
 const booksData = {
     books,
@@ -8,35 +13,36 @@ const booksData = {
     booksPerPage: BOOKS_PER_PAGE 
 }
 
+
 let page = 1;
 let matches = booksData.books;
 
 const displayBookPreviews = () => {
     const starting = document.createDocumentFragment();
+
     for (const book of matches.slice(0, booksData.booksPerPage)) {
         starting.appendChild(createBookPreviewElement(book));
     }
     document.querySelector('[data-list-items]').appendChild(starting);
 }
 
+
+const displayGenreOptions = () => {
+    const genreHtml = document.createDocumentFragment();
+    const firstGenreElement = createGenreOptionElement('any', 'All Genres');
+    genreHtml.appendChild(firstGenreElement);
+    
+    for (const [genreId, genreName] of Object.entries(booksData.genres)) {
+        const element = createGenreOptionElement(genreId, genreName);
+        genreHtml.appendChild(element);
+      }
+      document.querySelector('[data-search-genres]').appendChild(genreHtml)
+}
+
 const initializeApp = () => {
     displayBookPreviews();
+    displayGenreOptions();
 }
-
-const genreHtml = document.createDocumentFragment()
-const firstGenreElement = document.createElement('option')
-firstGenreElement.value = 'any'
-firstGenreElement.innerText = 'All Genres'
-genreHtml.appendChild(firstGenreElement)
-
-for (const [id, name] of Object.entries(genres)) {
-    const element = document.createElement('option')
-    element.value = id
-    element.innerText = name
-    genreHtml.appendChild(element)
-}
-
-document.querySelector('[data-search-genres]').appendChild(genreHtml)
 
 const authorsHtml = document.createDocumentFragment()
 const firstAuthorElement = document.createElement('option')
