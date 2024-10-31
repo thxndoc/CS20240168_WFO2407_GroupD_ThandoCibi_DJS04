@@ -57,7 +57,7 @@ export const createGenreOptionElement = (genreId, genreName) => {
     document.querySelector('[data-settings-overlay]').open = false
   }
 
-  export const updateShowMoreButton = () => {
+  export const updateShowMoreButton = (matches, page, booksData) => {
     const remainingBooks = matches.length - (page * booksData.booksPerPage);
     const showMoreButton = document.querySelector('[data-list-button]');
 
