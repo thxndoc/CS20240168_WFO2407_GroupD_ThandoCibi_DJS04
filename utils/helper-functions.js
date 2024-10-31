@@ -47,3 +47,35 @@ export const createGenreOptionElement = (genreId, genreName) => {
       document.documentElement.style.setProperty('--color-light', '255, 255, 255');
     }
   };
+
+  export const handleThemeEvent = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const { theme } = Object.fromEntries(formData);
+
+    updateTheme(theme);
+    document.querySelector('[data-settings-overlay]').open = false
+  }
+
+  export const setUpEventListeners = () => {
+      document.querySelector('[data-search-cancel]').addEventListener('click', () => {
+        document.querySelector('[data-search-overlay]').open = false
+    })
+    
+    document.querySelector('[data-settings-cancel]').addEventListener('click', () => {
+        document.querySelector('[data-settings-overlay]').open = false
+    })
+    
+    document.querySelector('[data-header-search]').addEventListener('click', () => {
+        document.querySelector('[data-search-overlay]').open = true 
+        document.querySelector('[data-search-title]').focus()
+    })
+    
+    document.querySelector('[data-header-settings]').addEventListener('click', () => {
+        document.querySelector('[data-settings-overlay]').open = true 
+    })
+    
+    document.querySelector('[data-list-close]').addEventListener('click', () => {
+        document.querySelector('[data-list-active]').open = false
+    })
+  }
