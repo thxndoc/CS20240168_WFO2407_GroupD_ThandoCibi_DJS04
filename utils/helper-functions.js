@@ -57,6 +57,18 @@ export const createGenreOptionElement = (genreId, genreName) => {
     document.querySelector('[data-settings-overlay]').open = false
   }
 
+  export const updateShowMoreButton = () => {
+    const remainingBooks = matches.length - (page * booksData.booksPerPage);
+    const showMoreButton = document.querySelector('[data-list-button]');
+
+    showMoreButton.innerHTML = `
+    <span>Show more</span>
+    <span class="list__remaining">(${remainingBooks > 0 ? remainingBooks : 0})</span>
+    `;
+
+    showMoreButton.disabled = remainingBooks <= 0;
+  }
+
   export const setUpEventListeners = () => {
       document.querySelector('[data-search-cancel]').addEventListener('click', () => {
         document.querySelector('[data-search-overlay]').open = false
