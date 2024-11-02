@@ -53,6 +53,7 @@ function displayAuthorOptions() {
 
 document.querySelector('[data-search-form]').addEventListener('submit', handleSearchSubmit);
 
+// handle search form submit event
 function handleSearchSubmit(event) {
     event.preventDefault();
 
@@ -65,11 +66,13 @@ function handleSearchSubmit(event) {
     closeSearchOverlay();
 }
 
+// get filters from search form
 function getFilters(form) {
     const formData = new FormData(form);
     return Object.fromEntries(formData);
 }
 
+// filter books based on genre, title and author
 function filterBooks(books, filters) {
     return books.filter(book => {
         const genreMatch = filters.genre === 'any' || book.genres.includes(filters.genre);
@@ -79,6 +82,7 @@ function filterBooks(books, filters) {
     });
 }
 
+// update results list based on search
 function updateResultsList(result) {
     const listMessage = document.querySelector('[data-list-message]');
     const listItems = document.querySelector('[data-list-items]');
@@ -95,11 +99,12 @@ function updateResultsList(result) {
     listItems.appendChild(newItems);
 }
 
-
+// scroll to top of page smoothly after filter
 function scrollToTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
+// close search overlay after filter
 function closeSearchOverlay() {
     document.querySelector('[data-search-overlay]').open = false
 }
@@ -144,6 +149,7 @@ document.querySelector('[data-list-items]').addEventListener('click', (event) =>
     }
 })
 
+// initialize app
 function initializeApp() {
     displayBookPreviews();
     displayGenreOptions();
