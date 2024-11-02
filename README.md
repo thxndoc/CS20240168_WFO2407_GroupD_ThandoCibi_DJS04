@@ -1,4 +1,20 @@
-# DJS03 Project Brief: Book Connect - Abstractions
+# Project Overview
+Refactor existing code by implementing abstractions, creating objects and functions.
+
+## Changes made:
+- Inside the **utils** folder, I created a file to add helper functions so that:<br>
+   - The functions can be reused and be kept separate from the main app logic
+   - The code in the main js file has improved readability<br>
+  
+- Inside the main file (scripts.js):<br> 
+  - I broke down the larger functions into smaller parts so that each function would have a single role or responsibility.
+  
+**Challenges:** <br>
+   - I struggled with figuring out which function to put in a separate file and which ones to keep in the main file as I had to consider which finction would be reusable/reused.
+   - Tried breaking down the larger functions into smaller parts so that each function would serve a single purpose and making sure that they still work afterwards.
+   - Struggled to make changes to the HTML file.
+
+## DJS03 Project Brief: Book Connect - Abstractions
 
 Dive into the delightful world of "Book Connect," where literary adventures await at your fingertips! Browse, explore, and uncover your next great read from a vast, vibrant collection. Whether you're a fan of thrilling mysteries, epic fantasies, or heartwarming romances, "Book Connect" brings the magic of books directly to you. Happy reading! 
 
