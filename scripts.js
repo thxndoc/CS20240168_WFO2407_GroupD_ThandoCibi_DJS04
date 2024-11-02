@@ -59,9 +59,11 @@ function handleSearchSubmit(event) {
 
     const filters = getFilters(event.target);
     const result = filterBooks(books, filters);
+    console.log(result)
 
+    matches = result;
     updateResultsList(result);
-    updateShowMoreButton(result);
+    updateShowMoreButton(result, page, booksData);
     scrollToTop();
     closeSearchOverlay();
 }
@@ -91,8 +93,8 @@ function updateResultsList(result) {
     listMessage.classList.toggle('list__message_show', result.length < 1);
     listItems.innerHTML = '';
 
-    result.slice(0, booksData.booksPerPage).forEach(({ author, id, image, title }) => {
-        const element = createBookPreviewElement(id, image, title, author);
+    result.slice(0, booksData.booksPerPage).forEach((book) => {
+        const element = createBookPreviewElement(book);
         newItems.appendChild(element);
     });
 
