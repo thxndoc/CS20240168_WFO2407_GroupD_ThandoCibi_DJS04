@@ -13,6 +13,10 @@ Refactor existing code by implementing abstractions, creating objects and functi
    - I struggled with figuring out which function to put in a separate file and which ones to keep in the main file as I had to consider which finction would be reusable/reused.
    - Tried breaking down the larger functions into smaller parts so that each function would serve a single purpose and making sure that they still work afterwards.
    - Struggled to make changes to the HTML file.
+   - **Filtered results displaying as undefined on browser**
+     - When filtering by genre/author, I noticed that the titles, authors, and images were rendering as `undefined`. Despite the console showing that the book objects contained valid data, it did not show up on the browser😭.
+     - To troubleshoot, I logged the data to the console at various points in my code, focusing on the results returned after filtering books based on genre or author. The console confirmed that the books array contained valid objects, with the expected properties such as id, title, author, and image.
+     - I found the cause of the issue in the `updateResultsList` function. Initially, I was using destructuring in the `forEach` method to extract properties directly from each book object. I then changed the `forEach` method to use a single parameter, `book`, allowing me to access the book's properties correctly.
 
 ## DJS03 Project Brief: Book Connect - Abstractions
 
