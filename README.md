@@ -12,6 +12,7 @@ Refactor existing code by implementing abstractions, creating objects and functi
 **Challenges:** <br>
    - I struggled with figuring out which function to put in a separate file and which ones to keep in the main file as I had to consider which finction would be reusable/reused.
    - Tried breaking down the larger functions into smaller parts so that each function would serve a single purpose and making sure that they still work afterwards.
+   - I tried getting the 'show more' button to calculate and update with the results, but time was not on my side anymore, so I left it.
    - Struggled to make changes to the HTML file.
    - **Filtered results displaying as undefined on browser**
      - When filtering by genre/author, I noticed that the titles, authors, and images were rendering as `undefined`. Despite the console showing that the book objects contained valid data, it did not show up on the browser😭.
