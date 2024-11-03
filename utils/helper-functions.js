@@ -1,7 +1,7 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from '../data.js'
 
 export const createBookPreviewElement = (book) => {
-  const bookElement = document.createElement('book-preview');
+const bookElement = document.createElement('book-preview');
   bookElement.setAttribute('data-preview', book.id);
   bookElement.setAttribute('image', book.image);
   bookElement.setAttribute('title', book.title);
